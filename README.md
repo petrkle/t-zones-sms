@@ -3,8 +3,8 @@ Posílání SMS zpráv přes t-zones.cz z příkazové řádky.
 Požadavky
 =========
 
-	http://phantomjs.org/
-	http://casperjs.org/
+- http://phantomjs.org
+- http://casperjs.org
 
 Instalace
 =========
