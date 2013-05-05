@@ -2,7 +2,9 @@ phantom.injectJs(require('system').env["HOME"]+'/.jquery.js');
 
 var casper = require('casper').create({
 	verbose: true,
-	logLevel: "info"
+	logLevel: "info",
+	loadImages: false,
+	loadPlugins: false
 });
 
 casper.userAgent('Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.63 Safari/537.31');
