@@ -9,9 +9,12 @@ Požadavky
 Instalace
 =========
 
-	wget -O $HOME/.jquery.js http://code.jquery.com/jquery-1.9.1.min.js
-	cp t-zones.json $HOME/.t-zones.json
-	vim $HOME/.t-zones.json
+	wget -O "$HOME/.jquery.js" http://code.jquery.com/jquery-1.9.1.min.js
+	cp t-zones.json "$HOME/.t-zones.json"
+	vim "$HOME/.t-zones.json"
+
+Ve Windows nahraďte proměnou $HOME za %userprofile% a do casperjs.bat
+přidejte přepínač --ignore-ssl-errors=yes
 
 Použití
 =======

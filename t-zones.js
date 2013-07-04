@@ -1,4 +1,10 @@
-phantom.injectJs(require('system').env["HOME"]+'/.jquery.js');
+var home = 'HOME';
+
+if(require('system').env["USERPROFILE"]){
+	home = 'USERPROFILE';
+}
+
+phantom.injectJs(require('system').env[home]+'/.jquery.js');
 
 var casper = require('casper').create({
 	verbose: true,
@@ -14,7 +20,7 @@ casper.start('https://www.t-mobile.cz', function() {
 });
 
 casper.then(function() {
-	var conf = jQuery.parseJSON(require('fs').read(require('system').env["HOME"]+'/.t-zones.json'));
+	var conf = jQuery.parseJSON(require('fs').read(require('system').env[home]+'/.t-zones.json'));
   this.fill('form[action="https://www.t-mobile.cz/.gang/login-url/portal"]', { username: conf.login, password: conf.password }, true);
 });
 
