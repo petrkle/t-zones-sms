@@ -33,10 +33,12 @@ casper.then(function() {
 });
 
 casper.then(function() {
-	if (!this.exists('.ico-person-small-green-filled')) {
-     this.echo('Login to t-zones failed! Check ' + settingsfile, 'ERROR');
-		 this.exit();
-  }
+	casper.waitForSelector('.ico-person-small-green-filled', function() {
+		if (!this.exists('.ico-person-small-green-filled')) {
+			 this.echo('Login to t-zones failed! Check ' + settingsfile, 'ERROR');
+			 this.exit();
+		}
+	});
 });
 
 casper.then(function() {
