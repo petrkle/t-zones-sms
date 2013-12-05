@@ -13,10 +13,9 @@ Instalace
 	cp t-zones.json "$HOME/.t-zones.json"
 	vim "$HOME/.t-zones.json"
 
-Ve Windows nahraďte proměnou $HOME za %userprofile% a do casperjs.bat
-přidejte přepínač --ignore-ssl-errors=yes
+Ve Windows nahraďte proměnou $HOME za %userprofile%.
 
 Použití
 =======
 
-	casperjs t-zones.js --tel=123456789 --msg="Vaše SMS zpráva"
+	casperjs --ignore-ssl-errors=yes t-zones.js --tel=123456789 --msg="Vaše SMS zpráva"
