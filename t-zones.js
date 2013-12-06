@@ -56,7 +56,7 @@ casper.then(function() {
 		this.echo(this.fetchText('.text-green'));
 	}else{
      this.echo('Sending message failed!', 'ERROR');
-		 exit();
+		 this.exit();
 	}
 });
 
