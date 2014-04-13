@@ -1,4 +1,5 @@
 var home = 'HOME';
+var xpath = require('casper').selectXPath;
 
 if(require('system').env["USERPROFILE"]){
 	home = 'USERPROFILE';
@@ -18,7 +19,7 @@ var casper = require('casper').create({
 casper.start('https://www.t-mobile.cz');
 
 casper.then(function() {
-		this.mouseEvent('mouseover', '.nav-last');
+		this.click(xpath('//a[text()="Přihlásit"]'));
 });
 
 casper.then(function() {
@@ -27,13 +28,13 @@ casper.then(function() {
 		 this.exit();
 	}
 	var conf = jQuery.parseJSON(require('fs').read(settingsfile));
-  this.fill('form[action="https://www.t-mobile.cz/.gang/login-url/portal"]',
+  this.fill('form[action="https://www.t-mobile.cz/.gang/login/tzones"]',
 		{ username: conf.login, password: conf.password },
 	 	 true);
 });
 
 casper.then(function() {
-	casper.waitForSelector('.ico-person-small-green-filled', function() {
+	casper.waitForSelector(xpath('//a[text()="Odhlásit"]'), function() {
 		if (!this.exists('.ico-person-small-green-filled')) {
 			 this.echo('Login to t-zones failed! Check ' + settingsfile, 'ERROR');
 			 this.exit();
@@ -42,12 +43,14 @@ casper.then(function() {
 });
 
 casper.then(function() {
-	this.open('https://sms.client.tmo.cz/closed.jsp');
+		this.click(xpath('//a[text()="Poslat SMS"]'));
 });
 
 casper.then(function() {
-    this.fill('form[action="#"]',
-			{ recipients: casper.cli.get("tel"), text: casper.cli.get("msg")},
+    this.fillSelectors('form[action="#"]',
+			{ 'input[name="recipients"]': casper.cli.get("tel"),
+				'textarea[name="text"]': casper.cli.get("msg")
+			},
 			 true);
 });
 
