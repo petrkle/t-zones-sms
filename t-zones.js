@@ -34,12 +34,13 @@ casper.then(function() {
 });
 
 casper.then(function() {
-	casper.waitForSelector(xpath('//a[text()="Odhlásit"]'), function() {
-		if (!this.exists('.ico-person-small-green-filled')) {
+	casper.waitForSelector(xpath('//a[text()="Odhlásit"]'), function then() {
+			this.echo("Login: " + this.fetchText(xpath('//p[@id="welcome"]/strong')));
+			},
+		function timeout(){
 			 this.echo('Login to t-zones failed! Check ' + settingsfile, 'ERROR');
 			 this.exit();
-		}
-	});
+		})
 });
 
 casper.then(function() {
