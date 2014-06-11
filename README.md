@@ -9,13 +9,15 @@ Požadavky
 Instalace
 =========
 
-	wget -O "$HOME/.jquery.js" http://code.jquery.com/jquery-1.9.1.min.js
-	cp t-zones.json "$HOME/.t-zones.json"
-	vim "$HOME/.t-zones.json"
+	cd "$HOME"
+	git clone https://github.com/petrkle/t-zones-sms.git
+	wget -O .jquery.js http://code.jquery.com/jquery-1.9.1.min.js
+	cp t-zones-sms/t-zones.json .t-zones.json
+	vim .t-zones.json
 
 Ve Windows nahraďte proměnou $HOME za %userprofile%.
 
 Použití
 =======
 
-	casperjs --ignore-ssl-errors=yes t-zones.js --tel=123456789 --msg="Vaše SMS zpráva"
+	casperjs t-zones.js --tel=123456789 --msg="Vaše SMS zpráva"
