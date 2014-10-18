@@ -20,4 +20,4 @@ Ve Windows nahraďte proměnou $HOME za %userprofile%.
 Použití
 =======
 
-	casperjs t-zones.js --tel=123456789 --msg="Vaše SMS zpráva"
+	casperjs --ssl-protocol=tlsv1 t-zones.js --tel=123456789 --msg="Vaše SMS zpráva"
