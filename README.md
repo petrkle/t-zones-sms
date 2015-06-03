@@ -1,17 +1,11 @@
 Posílání SMS zpráv přes t-zones.cz z příkazové řádky.
 
-Požadavky
-=========
-
-- http://phantomjs.org
-- http://casperjs.org
-
 Instalace
 =========
-
+	sudo npm -g install casperjs
 	cd "$HOME"
 	git clone https://github.com/petrkle/t-zones-sms.git
-	wget -O .jquery.js http://code.jquery.com/jquery-1.9.1.min.js
+	wget -O .jquery.js http://code.jquery.com/jquery-1.11.3.min.js
 	cp t-zones-sms/t-zones.json .t-zones.json
 	vim .t-zones.json
 
@@ -20,4 +14,4 @@ Ve Windows nahraďte proměnou $HOME za %userprofile%.
 Použití
 =======
 
-	casperjs --ssl-protocol=tlsv1 t-zones.js --tel=123456789 --msg="Vaše SMS zpráva"
+	casperjs t-zones.js --tel=123456789 --msg="Vaše SMS zpráva"
