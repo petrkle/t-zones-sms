@@ -16,6 +16,8 @@ var casper = require('casper').create({
   pageSettings: { loadImages: false, loadPlugins: false	}
 });
 
+casper.userAgent('Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36');
+
 casper.start('https://www.t-mobile.cz');
 
 casper.then(function() {
@@ -59,7 +61,7 @@ casper.then(function() {
 	if (this.exists('.text-green')) {
 		this.echo(this.fetchText('.text-green'));
 	}else{
-     this.echo('Sending message failed!', 'ERROR');
+		 this.echo(this.fetchText('.text-red'), 'ERROR');
 		 this.exit();
 	}
 });
