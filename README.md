@@ -15,3 +15,11 @@ Použití
 =======
 
 	casperjs t-zones.js --tel=123456789 --msg="Vaše SMS zpráva"
+
+Omezení
+=======
+
+Přes web jde poslat max. 50 sms denně.
+
+Když posíláte víc zpráv rychle za sebou, formulář vyžaduje
+opsání kódu z obrázku a tento skript selže.
