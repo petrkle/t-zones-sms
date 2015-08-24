@@ -16,7 +16,7 @@ var casper = require('casper').create({
   pageSettings: { loadImages: false, loadPlugins: false	}
 });
 
-casper.userAgent('Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36');
+casper.userAgent('Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36');
 
 casper.start('https://www.t-mobile.cz');
 
@@ -25,14 +25,16 @@ casper.then(function() {
 });
 
 casper.then(function() {
+	this.waitForText('Uživatelské jméno', function(){
 	if(typeof jQuery === 'undefined'){
      this.echo('jQuery not loaded! Check ' + jqueryfile, 'ERROR');
 		 this.exit();
 	}
 	var conf = jQuery.parseJSON(require('fs').read(settingsfile));
-  this.fill('form[action="https://www.t-mobile.cz/.gang/login/tzones"]',
+  this.fill('form[action="https://www.t-mobile.cz/.gang/login"]',
 		{ username: conf.login, password: conf.password },
 	 	 true);
+	});
 });
 
 casper.then(function() {
