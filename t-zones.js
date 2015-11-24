@@ -31,7 +31,7 @@ casper.then(function() {
 		 this.exit();
 	}
 	var conf = jQuery.parseJSON(require('fs').read(settingsfile));
-  this.fill('form[action="https://www.t-mobile.cz/.gang/login"]',
+  this.fill('form[action="/.gang/login"]',
 		{ username: conf.login, password: conf.password },
 	 	 true);
 	});
@@ -39,7 +39,7 @@ casper.then(function() {
 
 casper.then(function() {
 	casper.waitForSelector(xpath('//a[text()="Odhlásit"]'), function then() {
-			this.echo("Login: " + this.fetchText(xpath('//p[@id="welcome"]/strong')));
+			this.echo("Logout link: OK");
 			},
 		function timeout(){
 			 this.echo('Login to t-zones failed! Check ' + settingsfile, 'ERROR');
@@ -49,6 +49,10 @@ casper.then(function() {
 
 casper.then(function() {
 		this.click(xpath('//a[text()="Poslat SMS"]'));
+});
+
+casper.then(function() {
+			this.echo("Login: " + this.fetchText(xpath('//p[@class="user-info"]/span')));
 });
 
 casper.then(function() {
