@@ -31,7 +31,7 @@ casper.then(function() {
 		 this.exit();
 	}
 	var conf = jQuery.parseJSON(require('fs').read(settingsfile));
-  this.fill('form[action="/.gang/login"]',
+  this.fill('form[action="https://www.t-mobile.cz/.gang/login"]',
 		{ username: conf.login, password: conf.password },
 	 	 true);
 	});
