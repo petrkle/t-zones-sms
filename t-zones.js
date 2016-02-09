@@ -16,9 +16,9 @@ var casper = require('casper').create({
   pageSettings: { loadImages: false, loadPlugins: false	}
 });
 
-casper.userAgent('Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36');
+casper.userAgent('Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.103 Safari/537.36');
 
-casper.start('https://www.t-mobile.cz');
+casper.start('https://www.t-mobile.cz/osobni');
 
 casper.then(function() {
 		this.click(xpath('//a[text()="Přihlásit"]'));
@@ -64,10 +64,10 @@ casper.then(function() {
 });
 
 casper.then(function() {
-	if (this.exists('.text-green')) {
-		this.echo(this.fetchText('.text-green'));
+	if (this.exists('.background-green')) {
+		this.echo(this.fetchText('.background-green'));
 	}else{
-		 this.echo(this.fetchText('.text-red'), 'ERROR');
+		 this.echo(this.fetchText('.background-red'), 'ERROR');
 		 this.exit();
 	}
 });
