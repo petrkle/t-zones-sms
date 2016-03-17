@@ -56,7 +56,7 @@ casper.then(function() {
 });
 
 casper.then(function() {
-    this.fillSelectors('form[action="#"]',
+    this.fillSelectors('form[action="/sms/closed.jsp"]',
 			{ 'input[name="recipients"]': casper.cli.get("tel"),
 				'textarea[name="text"]': casper.cli.get("msg")
 			},
